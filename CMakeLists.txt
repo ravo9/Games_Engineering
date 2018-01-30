@@ -21,6 +21,8 @@ target_link_libraries(PRACTICAL_1 sfml-graphics)
 #### Space invaders ####
 file(GLOB_RECURSE SOURCES practical_2/*.cpp practical_2/*.h)
 add_executable(PRACTICAL_2_INVADERS ${SOURCES} )
+set_target_properties(PRACTICAL_2_INVADERS PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration))
 add_custom_target(copy_resources  ALL  COMMAND ${CMAKE_COMMAND}
 	-E copy_directory
 	"${PROJECT_SOURCE_DIR}/res"
