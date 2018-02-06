@@ -30,3 +30,12 @@ add_custom_target(copy_resources  ALL  COMMAND ${CMAKE_COMMAND}
 add_dependencies(PRACTICAL_2_INVADERS copy_resources)
 target_include_directories(PRACTICAL_2_INVADERS SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_2_INVADERS sfml-graphics)
+
+#### Maze Game ####
+file(GLOB_RECURSE SOURCES practical_3/*.cpp practical_3/*.h)
+add_executable(PRACTICAL_3_MAZE_GAME ${SOURCES} )
+set_target_properties(PRACTICAL_3_MAZE_GAME PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration))
+add_dependencies(PRACTICAL_3_MAZE_GAME copy_resources)
+target_include_directories(PRACTICAL_3_MAZE_GAME SYSTEM PRIVATE ${SFML_INCS})
+target_link_libraries(PRACTICAL_3_MAZE_GAME sfml-graphics)

@@ -11,6 +11,7 @@ protected:
 	sf::IntRect _sprite;
 	// Default constructor is hidden
 	Ship();
+	
 public:
 	// Constructor that takes a sprite
 	explicit Ship(sf::IntRect ir);

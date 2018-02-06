@@ -1,5 +1,6 @@
 #include "Ship.h"
 #include "game.h"
+#include "bullet.h"
 
 using namespace sf;
 using namespace std;
@@ -49,6 +50,7 @@ Player::Player() : Ship(IntRect(160, 32, 32, 32)) {
 }
 
 void Player::Update(const float &dt) {
+	//???
 	Ship::Update(dt);
 
 	// Handle  player  control
@@ -62,4 +64,15 @@ void Player::Update(const float &dt) {
 	}
 
 	move(direction * 200.0f * dt, 0);
+
+	// Bullets update
+	static vector<Bullet*> bullets;
+
+	if (Keyboard::isKeyPressed(controls[2])) {
+		Bullet::Fire(getPosition(), 1);
+	}
+
+	for (const auto s : bullets) {
+		s->Update(dt);
+	}
 }

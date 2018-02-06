@@ -5,6 +5,7 @@
 #include <string> 
 #include <iostream> 
 #include "Ship.h"
+#include "bullet.h"
 #include "game.h"
 
 using  namespace  sf;
@@ -12,6 +13,7 @@ using  namespace  std;
 
 Texture spritesheet;
 vector <Ship *> ships;
+//vector <Bullet *> bullets;
 Ship* player;
 
 void  Load() {
@@ -29,6 +31,11 @@ void  Load() {
 			ships.push_back(inv);
 		}
 	}
+
+	/*for (int i = 0; i < 255; ++i) {
+		auto bul = new Bullet({ -100, -100 }, 1);
+		Bullet::bullets.add(bul);
+	}*/
 
 	player = new Player();
 
@@ -72,7 +79,13 @@ void  Render(RenderWindow &window) {
 		window.draw(*s);
 	}
 
+	/*for (const auto b : bullets) {
+		window.draw(*b);
+	}*/
+
 	window.draw(*player);
+
+	
 }
 
 int  main() {
