@@ -31,6 +31,18 @@ add_dependencies(PRACTICAL_2_INVADERS copy_resources)
 target_include_directories(PRACTICAL_2_INVADERS SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_2_INVADERS sfml-graphics)
 
+## Maths  lib
+add_library(lib_maths INTERFACE)
+target_sources(lib_maths INTERFACE "${CMAKE_SOURCE_DIR}/lib_maths/maths.h")
+target_include_directories(lib_maths INTERFACE "${CMAKE_SOURCE_DIR}/lib_maths" SYSTEM INTERFACE ${SFML_INCS})
+
+#### Tile loader lib ####
+file(GLOB_RECURSE SOURCE_FILES lib_tile_level_loader/*.cpp  lib_tile_level_loader/*.h)
+add_library(lib_tile_level_loader STATIC ${SOURCE_FILES})
+target_include_directories(lib_tile_level_loader INTERFACE
+		"${CMAKE_SOURCE_DIR}/lib_tile_level_loader/" )
+target_link_libraries(lib_tile_level_loader lib_maths sfml-graphics)
+
 #### Maze Game ####
 file(GLOB_RECURSE SOURCES practical_3/*.cpp practical_3/*.h)
 add_executable(PRACTICAL_3_MAZE_GAME ${SOURCES} )
@@ -38,4 +50,5 @@ set_target_properties(PRACTICAL_3_MAZE_GAME PROPERTIES VS_DEBUGGER_WORKING_DIREC
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration))
 add_dependencies(PRACTICAL_3_MAZE_GAME copy_resources)
 target_include_directories(PRACTICAL_3_MAZE_GAME SYSTEM PRIVATE ${SFML_INCS})
-target_link_libraries(PRACTICAL_3_MAZE_GAME sfml-graphics)
+target_link_libraries(PRACTICAL_3_MAZE_GAME lib_tile_level_loader sfml-graphics)
+

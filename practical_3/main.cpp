@@ -1,8 +1,9 @@
-#include  <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <string> 
 #include <iostream> 
 #include "Entity.h"
 #include "Player.h"
+#include "levelsystem.h"
 
 using  namespace  sf;
 using  namespace  std;
@@ -12,6 +13,8 @@ Player* player;
 void  Load() {
 
 	player = new Player();
+
+	ls::loadLevelFile("res/maze_2.txt");
 
 }
 
@@ -44,6 +47,7 @@ void  Render(RenderWindow &window) {
 
 	player->render(window);
 	//window.draw(*player);
+	ls::render(window);
 }
 
 int  main() {
