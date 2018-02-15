@@ -133,11 +133,11 @@ void LevelSystem::render(RenderWindow &window) {
 	}
 }
 
-/*size_t LevelSystem::getHeight() {
+size_t LevelSystem::getHeight() {
 	return _height;
 }
 
 size_t LevelSystem::getWidth() {
 	return _width;
-}*/
+}	
 

@@ -52,3 +52,12 @@ add_dependencies(PRACTICAL_3_MAZE_GAME copy_resources)
 target_include_directories(PRACTICAL_3_MAZE_GAME SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_3_MAZE_GAME lib_tile_level_loader sfml-graphics)
 
+#### Pacman Game ####
+file(GLOB_RECURSE SOURCES practical_4/*.cpp practical_4/*.h)
+add_executable(PRACTICAL_4_PACMAN ${SOURCES} )
+set_target_properties(PRACTICAL_4_PACMAN PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration))
+add_dependencies(PRACTICAL_4_PACMAN copy_resources)
+target_include_directories(PRACTICAL_4_PACMAN SYSTEM PRIVATE ${SFML_INCS})
+target_link_libraries(PRACTICAL_4_PACMAN sfml-graphics)
+
