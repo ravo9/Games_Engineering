@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
 class Scene {
 public:
@@ -9,8 +10,8 @@ public:
 	virtual void update(double dt);
 	virtual void render();
 	virtual void load() = 0;
-	std::vector<std::shared_ptr<Entity>> &getEnts();
+	//std::vector<std::shared_ptr<Entity>> &getEnts();
 	
 protected:
-	EntityManager _ents;
+	EntityManager* _ents;
 };

@@ -1,3 +1,6 @@
+#include <iostream>
+#include "scene.h"
+
 extern std::shared_ptr<Scene> gameScene;
 extern std::shared_ptr<Scene> menuScene;
 extern std::shared_ptr<Scene> activeScene;
@@ -7,7 +10,8 @@ private:
 	sf::Text text;
 
 public:
-	MenuScene();
+	// Is it correct?
+	MenuScene() = default;
 	void update(double dt) override;
 	void render() override;
 	void load() override;

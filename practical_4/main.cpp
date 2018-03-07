@@ -11,22 +11,8 @@
 using  namespace  sf;
 using  namespace  std;
 
-Player* player;
-Ghost* g1;
-Ghost* g2;
-EntityManager* entityManager;
-
 void  Load() {
 	srand(time(NULL));
-
-	// MOVE ENTITY CREATION
-
-
-	entityManager = new EntityManager();
-
-	entityManager->list.push_back(new Player());
-	entityManager->list.push_back(new Ghost());
-	entityManager->list.push_back(new Ghost());
 
 	// Load Scene-Local Assets
 	gameScene.reset(new GameScene());
@@ -43,6 +29,10 @@ void  Update(RenderWindow &window) {
 	static  Clock  clock;
 	float  dt = clock.restart().asSeconds ();
 
+	// New approach
+	activeScene->update(dt);
+
+	/*
 	//  check  and  consume  events
 	Event  event;
 
@@ -59,13 +49,13 @@ void  Update(RenderWindow &window) {
 	}
 
 	entityManager->update(dt);
+	*/
 
 }
 
 void  Render(RenderWindow &window) {
 	
-	entityManager->render(window);
-	// Now our renderer doesn't render anything. It still rely on the SFML renderer.
+	activeScene->render();
 	Renderer::render();
 }
 
@@ -73,7 +63,6 @@ int  main() {
 	
 	RenderWindow window(VideoMode(800, 600), "Pacman Game");
 	Renderer::initialise(window);
-
 	Load();
 
 	while (window.isOpen()) {
