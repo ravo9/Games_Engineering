@@ -15,11 +15,9 @@ void Entity::update(const double dt) {
 }
 
 void EntityManager::update(const double dt) {
-	// Tu jest jakis problem
-	if (list.size() != NULL) {
-		for (int i = 0; i < list.size(); i++)
-			list[i]->update(dt);
-	}
+
+	for (int i = 0; i < list.size(); i++)
+		list[i]->update(dt);
 }
 
 void EntityManager::render(sf::RenderWindow &window) {

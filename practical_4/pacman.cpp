@@ -4,6 +4,7 @@
 #include "system_renderer.h"
 
 using  namespace  sf;
+using  namespace  std;
 
 // Externs are defined here
 std::shared_ptr<Scene> gameScene;
@@ -11,11 +12,11 @@ std::shared_ptr<Scene> menuScene;
 std::shared_ptr<Scene> activeScene;
 
 void MenuScene::update(double dt) {
+
 	if (Keyboard::isKeyPressed(Keyboard::Space)) {
 		activeScene = gameScene;
 	}
 	Scene::update(dt);
-	text.setString("Almost Pacman");
 }
 
 void MenuScene::render() {
@@ -23,7 +24,13 @@ void MenuScene::render() {
 }
 
 void MenuScene::load() {
-	
+
+	_ents = new EntityManager();
+
+	text.setString("Almost Pacman");
+	text.setColor(sf::Color::Red);
+	font.loadFromFile("res/fonts/RobotoMono-Regular.ttf");
+	text.setFont(font);
 }
 
 void GameScene::respawn() {
@@ -35,11 +42,13 @@ void GameScene::update(double dt) {
 		activeScene = menuScene;
 	}
 	Scene::update(dt);
-	// ...
 }
 
 void GameScene::render() {
-	
+
+	//Ghost* g = new Ghost();
+	//Renderer::queue(g->_shape);
+	//Renderer::queue(g->render);
 }
 
 void GameScene::load() {

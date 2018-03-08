@@ -12,6 +12,7 @@ using  namespace  sf;
 using  namespace  std;
 
 void  Load() {
+
 	srand(time(NULL));
 
 	// Load Scene-Local Assets
@@ -25,37 +26,20 @@ void  Load() {
 }
 
 void  Update(RenderWindow &window) {
+
 	//  Reset  clock , recalculate  deltatime
 	static  Clock  clock;
 	float  dt = clock.restart().asSeconds ();
 
 	// New approach
 	activeScene->update(dt);
-
-	/*
-	//  check  and  consume  events
-	Event  event;
-
-	while (window.pollEvent(event)) {
-		if (event.type ==  Event::Closed) {
-			window.close();
-			return;
-		}
-	}
-
-	// Quit  Via  ESC  Key
-	if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-		window.close();
-	}
-
-	entityManager->update(dt);
-	*/
-
 }
 
 void  Render(RenderWindow &window) {
-	
+
+	// Add everything to be drawn to sprites.
 	activeScene->render();
+	// Draw all sprites.
 	Renderer::render();
 }
 

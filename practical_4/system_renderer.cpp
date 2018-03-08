@@ -1,8 +1,8 @@
 #include "system_renderer.h"
 #include <queue>
 
-using namespace sf;
 using namespace std;
+using namespace sf;
 
 static queue<const Drawable *> sprites;
 static RenderWindow *rw;
